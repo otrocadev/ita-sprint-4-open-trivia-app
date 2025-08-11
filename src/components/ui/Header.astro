@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
-import Button from './Button.astro'
+import Placeholder from './Placeholder.astro'
 
 import { appStatus } from '../../content/global-variables'
 ---
@@ -12,13 +12,13 @@ import { appStatus } from '../../content/global-variables'
     TRIVIA
   </h1>
   <div class="flex items-center justify-center gap-4 p-4">
-    <Button color={'theme-2'}>
-      <Icon name={'heart'} />
+    <Placeholder>
+      <Icon name="heart" />
       {appStatus.lives}
-    </Button>
-    <Button color="theme-2">
-      <Icon name={'coin'} />
+    </Placeholder>
+    <Placeholder>
+      <Icon name="coin" />
       {appStatus.coins}
-    </Button>
+    </Placeholder>
   </div>
 </header>
