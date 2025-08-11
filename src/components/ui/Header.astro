@@ -1,0 +1,24 @@
+---
+import { Icon } from 'astro-icon/components'
+import Button from './Button.astro'
+
+import { appStatus } from '../../content/global-variables'
+---
+
+<header class="flex items-center justify-between p-4">
+  <h1
+    class="text-theme-1 text-4xl sm:text-6xl text-shadow-custom-xl text-outline-xl"
+  >
+    TRIVIA
+  </h1>
+  <div class="flex items-center justify-center gap-4 p-4">
+    <Button color={'theme-2'}>
+      <Icon name={'heart'} />
+      {appStatus.lives}
+    </Button>
+    <Button color="theme-2">
+      <Icon name={'coin'} />
+      {appStatus.coins}
+    </Button>
+  </div>
+</header>

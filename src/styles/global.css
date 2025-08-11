@@ -1,5 +1,14 @@
 @import 'tailwindcss';
 
+:root {
+  --color-correct: #0bcd72;
+  --color-incorrect: #fa3e57;
+  --color-theme-1: #ffa100;
+  --color-theme-2: #ef60aa;
+  --color-principal-text-color: #fff;
+  --color-shadow-text-color: #1a1d21;
+}
+
 @font-face {
   font-family: 'Akira Expanded';
   src: url('../assets/fonts/Akira Expanded Demo.otf') format('opentype');
@@ -32,14 +41,20 @@
 
   --text-shadow-custom: 0.5px 2px 0 var(--color-shadow-text-color),
     -0.5px 2px 0 var(--color-shadow-text-color);
+  --text-shadow-custom-xl: 1px 6px 0 var(--color-shadow-text-color),
+    -1px 6px 0 var(--color-shadow-text-color);
 }
 
 @layer utilities {
   .text-outline {
     -webkit-text-stroke: 1px var(--color-shadow-text-color);
   }
+
+  .text-outline-xl {
+    -webkit-text-stroke: 2px var(--color-shadow-text-color);
+  }
 }
 
 body {
-  font-family: 'Outfit', Arial, Helvetica, sans-serif;
+  font-family: 'Akira Expanded', Arial, Helvetica, sans-serif;
 }
