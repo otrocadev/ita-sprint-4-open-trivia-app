@@ -1,0 +1,9 @@
+---
+const { buttonColor = 'correct' } = Astro.props
+---
+
+<button
+  class=`bg-${buttonColor} font-akira border border-shadow-text-color shadow-custom text-principal-text-color px-4 py-2 rounded-md text-shadow-custom text-outline`
+>
+  <slot />
+</button>

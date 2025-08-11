@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Akira Expanded';
+  src: url('../assets/fonts/Akira Expanded Demo.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Outfit';
+  src: url('../assets/fonts/Outfit-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900; /* Variable font weight range */
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-akira: 'Akira Expanded', sans-serif;
+  --font-outfit: 'Outfit', sans-serif;
+
+  --color-correct: #0bcd72;
+  --color-incorrect: #fa3e57;
+  --color-theme-1: #ffa100;
+  --color-theme-2: #ef60aa;
+  --color-principal-text-color: #fff;
+  --color-shadow-text-color: #1a1d21;
+
+  --shadow-custom: 0px 4px 0px var(--color-shadow-text-color),
+    4px 4px 8px var(--color-shadow-text-color);
+
+  --text-shadow-custom: 0.5px 2px 0 var(--color-shadow-text-color),
+    -0.5px 2px 0 var(--color-shadow-text-color);
+}
+
+@layer utilities {
+  .text-outline {
+    -webkit-text-stroke: 1px var(--color-shadow-text-color);
+  }
+}
+
+body {
+  font-family: 'Outfit', Arial, Helvetica, sans-serif;
+}
