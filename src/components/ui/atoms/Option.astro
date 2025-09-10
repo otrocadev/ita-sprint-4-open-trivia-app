@@ -1,0 +1,22 @@
+---
+export interface Props {
+  status: 'default' | 'selected' | 'correct' | 'incorrect'
+}
+
+const { status = 'default' } = Astro.props as Props
+
+const colors = {
+  default: 'bg-default',
+  selected: 'bg-theme-1',
+  correct: 'bg-correct scale-110',
+  incorrect: 'bg-incorrect scale-110',
+}
+
+const className = colors[status]
+---
+
+<button
+  class={`flex border-black shadow-custom text-gray-100 border-2 py-2 px-12 rounded-xl min-w-md items-center justify-center text-shadow-custom text-outline ${className}`}
+>
+  <slot />
+</button>
