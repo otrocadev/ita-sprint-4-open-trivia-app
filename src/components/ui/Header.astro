@@ -1,8 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
-import Placeholder from './Placeholder.astro'
-
 import { appStatus } from '../../content/global-variables'
+import Placeholder from './atoms/Placeholder.astro'
 ---
 
 <header class="flex items-center justify-between p-4">
@@ -13,12 +12,12 @@ import { appStatus } from '../../content/global-variables'
   </h1>
   <div class="flex items-center justify-center gap-4 p-4">
     <Placeholder>
-      <Icon name="heart" />
-      {appStatus.lives}
-    </Placeholder>
-    <Placeholder>
       <Icon name="coin" />
       {appStatus.coins}
+    </Placeholder>
+    <Placeholder>
+      <Icon name="heart" />
+      {appStatus.lives}
     </Placeholder>
   </div>
 </header>
