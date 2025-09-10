@@ -1,21 +1,33 @@
 ---
 import Option from '../atoms/Option.astro'
+import type { TriviaResponse } from 'src/types/triviaTypes.ts'
+
+const { question } = Astro.props as TriviaResponse
+
+const questionData = question.results?.[0]
+
+if (!questionData) {
+  throw new Error('No question data available')
+}
+
+let possibleResponses = [...questionData.incorrect_answers]
+
+// Generating a random position to insert the correct answer in the possibleAnsers array
+const correctAnswerPosition = Math.floor(Math.random() * 4)
+possibleResponses.splice(correctAnswerPosition, 0, questionData.correct_answer)
 ---
 
 <article
   class="flex flex-col gap-8 bg-background-card p-8 border-2 border-gray-900 rounded-2xl shadow-2xl w-full max-w-3xl m-auto"
 >
-  <span
-    >Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, optio
-    dolorem aliquid facilis odit velit modi debitis, repellendus sed
-    voluptatibus tenetur error! Qui quidem ratione officia ad at libero. Iure?</span
-  >
+  <span>{questionData.question}</span>
   <div
     class="flex flex-col gap-4 w-fit justify-center items-center m-auto min-w-xl"
   >
-    <Option status="default">Hola</Option>
-    <Option status="selected">Isaac Newtoon</Option>
-    <Option status="correct">Albert Einstein</Option>
-    <Option status="incorrect">Hola</Option>
+    {
+      possibleResponses.map((response) => (
+        <Option status="default">{response}</Option>
+      ))
+    }
   </div>
 </article>
