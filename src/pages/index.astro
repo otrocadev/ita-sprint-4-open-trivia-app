@@ -2,7 +2,24 @@
 import Layout from '../layouts/Layout.astro'
 import Question from 'src/ui/molecules/QuestionCard.astro'
 
-const mokedResponse = {}
+const mokedResponse = {
+  response_code: 0,
+  results: [
+    {
+      type: 'multiple',
+      difficulty: 'easy',
+      category: 'Entertainment: Musicals &amp; Theatres',
+      question:
+        'Who wrote the award winning musical &quot;In The Heights&quot;?',
+      correct_answer: 'Lin-Manuel Miranda',
+      incorrect_answers: [
+        'Steven Sondheim',
+        'Francis Scott Key',
+        'John Phillips Sousa',
+      ],
+    },
+  ],
+}
 ---
 
 <Layout>

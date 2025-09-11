@@ -37,6 +37,7 @@
   --color-principal-text-color: #fff;
   --color-shadow-text-color: #1a1d21;
   --color-background-card: #fff;
+  --color-footer: #0f2ea6;
 
   --shadow-custom: 0px 4px 0px var(--color-shadow-text-color),
     4px 4px 8px var(--color-shadow-text-color);
