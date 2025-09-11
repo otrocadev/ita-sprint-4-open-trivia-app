@@ -1,4 +1,4 @@
-interface QuestionResponse {
+export interface QuestionResponse {
   type: 'multiple'
   difficulty: 'easy' | 'medium' | 'hard'
   category: string
