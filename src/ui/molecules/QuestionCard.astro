@@ -7,19 +7,25 @@ const { question } = Astro.props as TriviaResponse
 
 let questionData
 let possibleResponses: string[] = []
+let correctAnswerPosition: number = -1
 let error: boolean = false
 
 try {
   questionData = question.results?.[0]
-
   if (!questionData) {
     throw new Error('No question data available')
   }
 
-  possibleResponses = getPossibleResponses(questionData)
+  const posibleResponsesData = getPossibleResponses(questionData)
+  possibleResponses = posibleResponsesData.possibleResponses
+  correctAnswerPosition = posibleResponsesData.correctAnswerPosition
 } catch (err) {
   error = true
   console.error('Error printing the question:', err)
+}
+
+const isAnswerCorrect = (responseIndex: number) => {
+  return responseIndex === correctAnswerPosition
 }
 ---
 
@@ -36,8 +42,8 @@ try {
     <article class="flex flex-col gap-8 bg-background-card p-8 border-2 border-gray-900 rounded-2xl shadow-2xl w-full max-w-3xl m-auto">
       <span>{questionData?.question}</span>
       <div class="flex flex-col gap-4 w-fit justify-center items-center m-auto min-w-xl">
-        {possibleResponses.map((response) => (
-          <Option status="default">{response}</Option>
+        {possibleResponses.map((response, index) => (
+          <Option isCorrect={isAnswerCorrect(index)}>{response}</Option>
         ))}
       </div>
     </article>

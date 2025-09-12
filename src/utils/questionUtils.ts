@@ -11,5 +11,5 @@ export const getPossibleResponses = (questionData: QuestionResponse) => {
     questionData.correct_answer
   )
 
-  return possibleResponses
+  return { possibleResponses, correctAnswerPosition }
 }

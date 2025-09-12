@@ -1,22 +1,37 @@
 ---
-export interface Props {
-  status: 'default' | 'selected' | 'correct' | 'incorrect'
+interface Props {
+  isCorrect: boolean
 }
 
-const { status = 'default' } = Astro.props as Props
-
-const colors = {
-  default: 'bg-default',
-  selected: 'bg-theme-1',
-  correct: 'bg-correct scale-110',
-  incorrect: 'bg-incorrect scale-110',
-}
-
-const className = colors[status]
+const { isCorrect } = Astro.props
 ---
 
 <button
-  class={`flex border-black shadow-custom text-gray-100 border-2 py-2 px-12 rounded-xl min-w-md items-center justify-center text-shadow-custom text-outline ${className}`}
+  data-is-correct={isCorrect}
+  class={`flex border-black shadow-custom text-gray-100 border-2 py-2 px-12 rounded-xl min-w-md items-center justify-center text-shadow-custom text-outline bg-default hover:scale-105 transition-transform duration-200 hover:cursor-pointer`}
 >
   <slot />
 </button>
+
+<script>
+  const buttons = document.querySelectorAll('button')
+  let isAlreadyClicked = false
+
+  buttons.forEach((button: any) => {
+    button.addEventListener('click', (event: Event) => {
+      const target = event.target as HTMLButtonElement
+      const isCorrect = target.getAttribute('data-is-correct') === 'true'
+
+      // Controlling that only one option can be clicked
+      if (isAlreadyClicked) return
+      isAlreadyClicked = true
+      if (isCorrect) {
+        target.classList.remove('bg-default')
+        target.classList.add('bg-correct')
+      } else {
+        target.classList.remove('bg-default')
+        target.classList.add('bg-incorrect')
+      }
+    })
+  })
+</script>
