@@ -1,21 +1,26 @@
 ---
 import Option from '../atoms/Option.astro'
+import { decodeHtml } from 'src/utils/appUtils.ts'
 import { getPossibleResponses } from 'src/utils/questionUtils'
 import type { TriviaResponse } from '../../types/triviaTypes'
 
-const { question } = Astro.props as TriviaResponse
+const { APIresponse } = Astro.props as TriviaResponse
 
 let questionData
+let questionText: string = ''
 let possibleResponses: string[] = []
 let correctAnswerPosition: number = -1
 let error: boolean = false
 
 try {
-  questionData = question.results?.[0]
+  questionData = APIresponse.results?.[0]
   if (!questionData) {
     throw new Error('No question data available')
   }
+  // Converting HTML entities to normal text
+  questionText = decodeHtml(questionData.question)
 
+  // Using the utility function to get possible responses and correct answer position
   const posibleResponsesData = getPossibleResponses(questionData)
   possibleResponses = posibleResponsesData.possibleResponses
   correctAnswerPosition = posibleResponsesData.correctAnswerPosition
@@ -40,7 +45,7 @@ const isAnswerCorrect = (responseIndex: number) => {
     </article>
   ) : (
     <article class="flex flex-col gap-8 bg-background-card p-8 border-2 border-gray-900 rounded-2xl shadow-2xl w-full max-w-3xl m-auto">
-      <span>{questionData?.question}</span>
+      <span>{questionText}</span>
       <div class="flex flex-col gap-4 w-fit justify-center items-center m-auto min-w-xl">
         {possibleResponses.map((response, index) => (
           <Option isCorrect={isAnswerCorrect(index)}>{response}</Option>
@@ -49,3 +54,26 @@ const isAnswerCorrect = (responseIndex: number) => {
     </article>
   )
 }
+
+<script>
+  const buttons = document.querySelectorAll('button')
+  let isAlreadyClicked = false
+
+  buttons.forEach((button: any) => {
+    button.addEventListener('click', (event: Event) => {
+      const target = event.target as HTMLButtonElement
+      const isCorrect = target.getAttribute('data-is-correct') === 'true'
+
+      // Controlling that only one option can be clicked
+      if (isAlreadyClicked) return
+      isAlreadyClicked = true
+      if (isCorrect) {
+        target.classList.remove('bg-default')
+        target.classList.add('bg-correct')
+      } else {
+        target.classList.remove('bg-default')
+        target.classList.add('bg-incorrect')
+      }
+    })
+  })
+</script>

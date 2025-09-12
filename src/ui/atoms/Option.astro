@@ -12,26 +12,3 @@ const { isCorrect } = Astro.props
 >
   <slot />
 </button>
-
-<script>
-  const buttons = document.querySelectorAll('button')
-  let isAlreadyClicked = false
-
-  buttons.forEach((button: any) => {
-    button.addEventListener('click', (event: Event) => {
-      const target = event.target as HTMLButtonElement
-      const isCorrect = target.getAttribute('data-is-correct') === 'true'
-
-      // Controlling that only one option can be clicked
-      if (isAlreadyClicked) return
-      isAlreadyClicked = true
-      if (isCorrect) {
-        target.classList.remove('bg-default')
-        target.classList.add('bg-correct')
-      } else {
-        target.classList.remove('bg-default')
-        target.classList.add('bg-incorrect')
-      }
-    })
-  })
-</script>

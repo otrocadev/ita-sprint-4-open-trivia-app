@@ -8,7 +8,7 @@ export interface QuestionResponse {
 }
 
 export interface TriviaResponse {
-  question: {
+  APIresponse: {
     response_code: number
     results: Array<QuestionResponse>
   }
