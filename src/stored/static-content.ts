@@ -1,5 +1,3 @@
-export const content = {}
-
 export const socialLinks = [
   {
     name: 'github',

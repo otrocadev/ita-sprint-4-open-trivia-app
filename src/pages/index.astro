@@ -1,6 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import Question from 'src/ui/molecules/QuestionCard.astro'
+import Layout from 'src/components/layouts/Layout.astro'
+import Question from 'src/components/ui/molecules/QuestionCard.astro'
 import { getQuestion } from 'src/services/triviaAPI.ts'
 
 const APIResponse = await getQuestion()

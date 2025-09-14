@@ -2,7 +2,7 @@
 import Option from '../atoms/Option.astro'
 import { decodeHtml } from 'src/utils/appUtils.ts'
 import { getPossibleResponses } from 'src/utils/questionUtils'
-import type { TriviaResponse } from '../../types/triviaTypes'
+import type { TriviaResponse } from 'src/types/triviaTypes.ts'
 
 const { APIresponse } = Astro.props as TriviaResponse
 
@@ -44,7 +44,10 @@ const isAnswerCorrect = (responseIndex: number) => {
       </span>
     </article>
   ) : (
-    <article class="flex flex-col gap-8 bg-background-card p-8 border-2 border-gray-900 rounded-2xl shadow-2xl w-full max-w-3xl m-auto">
+    <article
+      id="question-card"
+      class="flex flex-col gap-8 bg-background-card p-8 border-2 border-gray-900 rounded-2xl shadow-2xl w-full max-w-3xl m-auto"
+    >
       <span>{questionText}</span>
       <div class="flex flex-col gap-4 w-fit justify-center items-center m-auto min-w-xl">
         {possibleResponses.map((response, index) => (
@@ -56,24 +59,25 @@ const isAnswerCorrect = (responseIndex: number) => {
 }
 
 <script>
-  const buttons = document.querySelectorAll('button')
+  import { manageOptionButtonClases } from 'src/utils/questionUtils'
+
+  const buttons = document.querySelectorAll('.response-option')
   let isAlreadyClicked = false
 
   buttons.forEach((button: any) => {
     button.addEventListener('click', (event: Event) => {
-      const target = event.target as HTMLButtonElement
-      const isCorrect = target.getAttribute('data-is-correct') === 'true'
+      const button = event.target as HTMLButtonElement
+      const isCorrect = button.getAttribute('data-is-correct') === 'true'
 
       // Controlling that only one option can be clicked
       if (isAlreadyClicked) return
       isAlreadyClicked = true
-      if (isCorrect) {
-        target.classList.remove('bg-default')
-        target.classList.add('bg-correct')
-      } else {
-        target.classList.remove('bg-default')
-        target.classList.add('bg-incorrect')
-      }
+
+      manageOptionButtonClases(button, isCorrect)
+
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000)
     })
   })
 </script>
