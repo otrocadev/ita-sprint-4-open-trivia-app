@@ -60,6 +60,7 @@ const isAnswerCorrect = (responseIndex: number) => {
 
 <script>
   import { manageOptionButtonClases } from 'src/utils/questionUtils'
+  import { manageResponse } from 'src/utils/appUtils'
 
   const buttons = document.querySelectorAll('.response-option')
   let isAlreadyClicked = false
@@ -74,6 +75,7 @@ const isAnswerCorrect = (responseIndex: number) => {
       isAlreadyClicked = true
 
       manageOptionButtonClases(button, isCorrect)
+      manageResponse(isCorrect)
 
       setTimeout(() => {
         window.location.reload()

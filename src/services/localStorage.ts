@@ -8,7 +8,16 @@ export const getLocalStorageData = () => {
   }
 }
 
-export const setLocalStorageData = (coins: string, lives: string) => {
-  window.localStorage.setItem('coins', coins)
-  window.localStorage.setItem('lives', lives)
+export const getCoinsData = () => {
+  const coins = window.localStorage.getItem('coins')
+  return parseInt(coins!)
+}
+
+export const updateCoinsData = (coins: number) => {
+  window.localStorage.setItem('coins', coins.toString())
+}
+
+export const resetLocalStorageData = () => {
+  window.localStorage.setItem('coins', '0')
+  window.localStorage.setItem('lives', '3')
 }
