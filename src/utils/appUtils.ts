@@ -1,7 +1,9 @@
 import {
   resetLocalStorageData,
   getCoinsData,
+  getLivesData,
   updateCoinsData,
+  updateLivesData,
 } from 'src/services/localStorage.ts'
 
 export const decodeHtml = (html: string) => {
@@ -26,8 +28,15 @@ const addCoins = (coins: number) => {
   updateCoinsData(coinsData + coins)
 }
 
+const removeLives = (lives: number) => {
+  const livesData = getLivesData()
+  updateLivesData(livesData - lives)
+}
+
 export const manageResponse = (isCorrect: boolean) => {
   if (isCorrect) {
     addCoins(100)
+  } else {
+    removeLives(1)
   }
 }
