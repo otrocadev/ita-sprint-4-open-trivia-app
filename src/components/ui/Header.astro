@@ -1,6 +1,5 @@
 ---
 import { Icon } from 'astro-icon/components'
-import { appStatus } from 'src/stored/global-variables'
 import Placeholder from './atoms/Placeholder.astro'
 ---
 
@@ -13,11 +12,23 @@ import Placeholder from './atoms/Placeholder.astro'
   <div class="flex items-center justify-center gap-4 p-4">
     <Placeholder>
       <Icon name="coin" />
-      {appStatus.coins}
+      <span id="coins">0</span>
     </Placeholder>
     <Placeholder>
       <Icon name="heart" />
-      {appStatus.lives}
+      <span id="lives">0</span>
     </Placeholder>
   </div>
 </header>
+
+<script type="module" is:inline>
+  import { getLocalStorageData } from '/src/services/localStorage.ts'
+
+  const { coins, lives } = getLocalStorageData()
+
+  const coinsElement = document.getElementById('coins')
+  const livesElement = document.getElementById('lives')
+
+  coinsElement.textContent = coins
+  livesElement.textContent = lives
+</script>
