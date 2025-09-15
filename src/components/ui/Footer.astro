@@ -1,0 +1,24 @@
+---
+import Button from 'src/components/ui/atoms/Button.astro'
+import { Icon } from 'astro-icon/components'
+import { socialLinks } from 'src/stored/static-content.ts'
+---
+
+<footer
+  class="text-white text-center w-fit mb-8 mx-auto rounded-4xl flex justify-center gap-4 text-3xl"
+>
+  {
+    socialLinks.map((link) => (
+      <a
+        class="scale-110 hover:scale-125 hover:cursor-pointer transition-all duration-300"
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button color="theme-2">
+          <Icon name={link.name} />
+        </Button>
+      </a>
+    ))
+  }
+</footer>

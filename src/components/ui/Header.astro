@@ -1,0 +1,36 @@
+---
+import { Icon } from 'astro-icon/components'
+import Placeholder from './atoms/Placeholder.astro'
+import RestartButton from './atoms/RestartButton.astro'
+---
+
+<header class="flex items-center justify-between p-4">
+  <h1
+    class="text-theme-1 text-4xl sm:text-6xl text-shadow-custom-xl text-outline-xl"
+  >
+    TRIVIA
+  </h1>
+  <RestartButton />
+  <div class="flex items-center justify-center gap-4 p-4">
+    <Placeholder>
+      <Icon name="coin" />
+      <span id="coins">0</span>
+    </Placeholder>
+    <Placeholder>
+      <Icon name="heart" />
+      <span id="lives">0</span>
+    </Placeholder>
+  </div>
+</header>
+
+<script type="module" is:inline>
+  import { getLocalStorageData } from '/src/services/localStorage.ts'
+
+  const { coins, lives } = getLocalStorageData()
+
+  const coinsElement = document.getElementById('coins')
+  const livesElement = document.getElementById('lives')
+
+  coinsElement.textContent = coins
+  livesElement.textContent = lives
+</script>

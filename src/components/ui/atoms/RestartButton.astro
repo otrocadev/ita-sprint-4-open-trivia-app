@@ -1,0 +1,23 @@
+---
+import Button from 'src/components/ui/atoms/Button.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<div class="restart-button">
+  <Button color="theme-1">
+    <Icon name="replay" />
+    Restart game
+  </Button>
+</div>
+
+<script type="module" is:inline>
+  import { restartGame } from '/src/utils/appUtils.ts'
+
+  const restartButton = document.querySelectorAll('.restart-button')
+
+  restartButton.forEach((button) => {
+    button.addEventListener('click', () => {
+      restartGame()
+    })
+  })
+</script>

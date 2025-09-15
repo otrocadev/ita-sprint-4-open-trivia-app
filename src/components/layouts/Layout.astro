@@ -1,0 +1,32 @@
+---
+import 'src/styles/global.css'
+import Header from 'src/components/ui/Header.astro'
+import Footer from 'src/components/ui/Footer.astro'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>TRIVIA TIME!!</title>
+  </head>
+  <body>
+    <div class="container m-auto min-h-screen flex flex-col justify-between">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('src/assets/img/background.svg');
+  }
+</style>
