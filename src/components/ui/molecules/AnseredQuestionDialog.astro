@@ -1,0 +1,70 @@
+---
+import RestartButton from '../atoms/RestartButton.astro'
+import NextQuestionButton from '../atoms/NextQuestionButton.astro'
+import Placeholder from '../atoms/Placeholder.astro'
+import { Icon } from 'astro-icon/components'
+import { getrandomCompliment } from 'src/utils/appUtils.ts'
+
+const randomCompliment = getrandomCompliment()
+---
+
+<div
+  class="flex items-center justify-center h-full w-full text-outline text-shadow-custom"
+>
+  <article
+    id="game-over-dialog"
+    class="text-white bg-theme-2 p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid-cols-3 hidden"
+  >
+    <Icon class="col-span-1 w-full h-full" name="headstone" />
+    <div class="col-span-2 flex flex-col gap-4 items-center justify-center">
+      <span class="text-5xl flex items-center gap-2">Game Over</span>
+      <span class="flex items-center gap-2 text-xl"
+        >You have run out of lives <Icon
+          class="w-12 h-12"
+          name="broken_heart"
+        /></span
+      >
+      <RestartButton />
+    </div>
+  </article>
+  <article
+    id="correct-answer-dialog"
+    class="text-white bg-correct p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid-cols-3 hidden"
+  >
+    <Icon class="col-span-1 w-full h-full" name="confetti" />
+    <div class="col-span-2 flex flex-col gap-4 items-center justify-center">
+      <span class="text-4xl flex items-center gap-2">{randomCompliment}</span>
+      <span class="flex items-center gap-2 text-xl"
+        >You responded correctly
+      </span>
+      <Placeholder>
+        +100
+        <Icon name="coin" />
+      </Placeholder>
+      <div class="flex justify-between gap-4">
+        <RestartButton />
+        <NextQuestionButton />
+      </div>
+    </div>
+  </article>
+  <article
+    id="incorrect-answer-dialog"
+    class="text-white bg-incorrect p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid-cols-3 hidden"
+  >
+    <Icon class="col-span-1 w-full h-full" name="cross" />
+    <div
+      class="col-span-2 flex flex-col gap-4 items-center justify-center text-outline"
+    >
+      <span class="text-5xl flex items-center gap-2">Ouch!</span>
+      <span class="flex items-center gap-2 text-xl">Best luck next time! </span>
+      <Placeholder>
+        - 1
+        <Icon name="broken_heart" />
+      </Placeholder>
+      <div class="flex justify-between gap-4">
+        <RestartButton />
+        <NextQuestionButton />
+      </div>
+    </div>
+  </article>
+</div>

@@ -13,3 +13,16 @@ export const getPossibleResponses = (questionData: QuestionResponse) => {
 
   return { possibleResponses, correctAnswerPosition }
 }
+
+export const manageOptionButtonClases = (
+  button: HTMLElement,
+  isCorrect: boolean
+) => {
+  if (isCorrect) {
+    button.classList.remove('bg-default')
+    button.classList.add('bg-correct')
+  } else {
+    button.classList.remove('bg-default')
+    button.classList.add('bg-incorrect')
+  }
+}

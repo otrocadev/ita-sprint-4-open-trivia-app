@@ -1,5 +1,3 @@
-export const content = {}
-
 export const socialLinks = [
   {
     name: 'github',
@@ -13,4 +11,13 @@ export const socialLinks = [
     name: 'website',
     url: 'https://www.otroca.dev/',
   },
+]
+
+export const complimentsPool = [
+  'You are so smart!',
+  'You are right!',
+  'That is correct!',
+  'You shuld be proud!',
+  'You are a master!',
+  'You are a champion!',
 ]
