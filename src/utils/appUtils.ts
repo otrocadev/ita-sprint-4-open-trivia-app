@@ -6,6 +6,8 @@ import {
   updateLivesData,
 } from 'src/services/localStorage.ts'
 
+import { complimentsPool } from 'src/stored/static-content.ts'
+
 export const decodeHtml = (html: string) => {
   html = html.replace(/&quot;/g, '"')
   html = html.replace(/&#039;/g, "'")
@@ -25,18 +27,31 @@ export const restartGame = () => {
 
 const addCoins = (coins: number) => {
   const coinsData = getCoinsData()
-  updateCoinsData(coinsData + coins)
+  const totalCoins = coinsData + coins
+  updateCoinsData(totalCoins)
 }
 
 const removeLives = (lives: number) => {
   const livesData = getLivesData()
   updateLivesData(livesData - lives)
+  console.log(getLivesData())
 }
 
 export const manageResponse = (isCorrect: boolean) => {
   if (isCorrect) {
     addCoins(100)
+    return 'correct'
   } else {
     removeLives(1)
+    const livesData = getLivesData()
+    if (livesData <= 0) {
+      return 'game-over'
+    }
+    return 'incorrect'
   }
+}
+
+export const getrandomCompliment = () => {
+  const randomIndex = Math.floor(Math.random() * complimentsPool.length)
+  return complimentsPool[randomIndex]
 }

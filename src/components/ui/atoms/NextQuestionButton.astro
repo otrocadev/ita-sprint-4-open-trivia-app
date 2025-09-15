@@ -1,0 +1,17 @@
+---
+import Button from 'src/components/ui/atoms/Button.astro'
+---
+
+<div class="next-question-button">
+  <Button color="theme-1"> Next question </Button>
+</div>
+
+<script type="module" is:inline>
+  const nextQuestionButton = document.querySelectorAll('.next-question-button')
+
+  nextQuestionButton.forEach((button) => {
+    button.addEventListener('click', () => {
+      window.location.reload()
+    })
+  })
+</script>

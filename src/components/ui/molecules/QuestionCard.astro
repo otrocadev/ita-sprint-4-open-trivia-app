@@ -1,5 +1,6 @@
 ---
 import Option from '../atoms/Option.astro'
+import AnseredQuestionDialog from './AnseredQuestionDialog.astro'
 import { decodeHtml } from 'src/utils/appUtils.ts'
 import { getPossibleResponses } from 'src/utils/questionUtils'
 import type { TriviaResponse } from 'src/types/triviaTypes.ts'
@@ -55,6 +56,10 @@ const isAnswerCorrect = (responseIndex: number) => {
         ))}
       </div>
     </article>
+
+    <section id="answered-question-dialog" class="absolute top-0 left-0 w-full h-full z-10 backdrop-blur-sm bg-black/50 hidden">
+        <AnseredQuestionDialog />
+    </section>
   )
 }
 
@@ -69,17 +74,36 @@ const isAnswerCorrect = (responseIndex: number) => {
     button.addEventListener('click', (event: Event) => {
       const button = event.target as HTMLButtonElement
       const isCorrect = button.getAttribute('data-is-correct') === 'true'
+      const answeredQuestionDialog = document.getElementById('answered-question-dialog')
+      const gameOverDialog = document.getElementById('game-over-dialog')
+      const correctAnswerDialog = document.getElementById('correct-answer-dialog')
+      const incorrectAnswerDialog = document.getElementById('incorrect-answer-dialog')
 
       // Controlling that only one option can be clicked
       if (isAlreadyClicked) return
       isAlreadyClicked = true
 
       manageOptionButtonClases(button, isCorrect)
-      manageResponse(isCorrect)
+      const gameStatus = manageResponse(isCorrect)
+      console.log(gameStatus)
 
+      
       setTimeout(() => {
-        window.location.reload()
-      }, 3000)
+      answeredQuestionDialog?.classList.remove('hidden')
+      
+      if (gameStatus === 'game-over') {
+        gameOverDialog?.classList.remove('hidden')
+        gameOverDialog?.classList.add('grid')
+      } else if (gameStatus === 'correct') {
+        // Crida a la API + inserta curiositat de la resposta correcta
+        correctAnswerDialog?.classList.remove('hidden')
+        correctAnswerDialog?.classList.add('grid')
+      } else if (gameStatus === 'incorrect') {
+        // Cerida a la API que t'insulta cretivament + insetar el text
+        incorrectAnswerDialog?.classList.remove('hidden')
+        incorrectAnswerDialog?.classList.add('grid')
+      }
+    }, 2000)
     })
   })
 </script>

@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import Placeholder from './atoms/Placeholder.astro'
-import Button from './atoms/Button.astro'
+import RestartButton from './atoms/RestartButton.astro'
 ---
 
 <header class="flex items-center justify-between p-4">
@@ -10,12 +10,7 @@ import Button from './atoms/Button.astro'
   >
     TRIVIA
   </h1>
-  <div id="restart-button">
-    <Button color="theme-1">
-      <Icon name="replay" />
-      Restart game
-    </Button>
-  </div>
+  <RestartButton />
   <div class="flex items-center justify-center gap-4 p-4">
     <Placeholder>
       <Icon name="coin" />
@@ -30,18 +25,12 @@ import Button from './atoms/Button.astro'
 
 <script type="module" is:inline>
   import { getLocalStorageData } from '/src/services/localStorage.ts'
-  import { restartGame } from '/src/utils/appUtils.ts'
 
   const { coins, lives } = getLocalStorageData()
 
   const coinsElement = document.getElementById('coins')
   const livesElement = document.getElementById('lives')
-  const restartButton = document.getElementById('restart-button')
 
   coinsElement.textContent = coins
   livesElement.textContent = lives
-
-  restartButton.addEventListener('click', () => {
-    restartGame()
-  })
 </script>
