@@ -5,6 +5,7 @@
   --color-incorrect: #fa3e57;
   --color-theme-1: #ffa100;
   --color-theme-2: #ef60aa;
+  --color-theme-3: #332c99;
   --color-principal-text-color: #fff;
   --color-shadow-text-color: #1a1d21;
 }
@@ -35,6 +36,7 @@
   --color-theme-1: #ffa100;
   --color-theme-2: #ef60aa;
   --color-principal-text-color: #fff;
+  --color-secondary-text-color: #332c99;
   --color-shadow-text-color: #1a1d21;
   --color-background-card: #fff;
   --color-footer: #0f2ea6;
@@ -59,5 +61,38 @@
 }
 
 body {
+  font-family: 'Outfit', Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+a,
+button {
   font-family: 'Akira Expanded', Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+}
+
+.answer-option {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border-width: 2px;
+  color: var(--color-principal-text-color);
+  border-color: var(--color-theme-1);
+  background-color: var(--color-theme-1);
+  padding-left: 3rem;
+  padding-right: 3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition-property: transform;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+
+.answer-option:hover {
+  transform: scale(1.1);
 }

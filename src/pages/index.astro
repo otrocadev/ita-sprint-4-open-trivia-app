@@ -1,11 +1,8 @@
 ---
 import Layout from 'src/components/layouts/Layout.astro'
-import Question from 'src/components/ui/molecules/QuestionCard.astro'
-import { getQuestion } from 'src/services/triviaAPI.ts'
-
-const APIResponse = await getQuestion()
+import Question from 'src/components/ui/core/QuestionCard.astro'
 ---
 
 <Layout>
-  <Question APIresponse={APIResponse} />
+  <Question />
 </Layout>

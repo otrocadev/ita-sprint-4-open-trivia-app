@@ -8,8 +8,14 @@ export interface QuestionResponse {
 }
 
 export interface TriviaResponse {
-  APIresponse: {
-    response_code: number
-    results: Array<QuestionResponse>
+  response_code: number
+  results: Array<QuestionResponse>
+}
+
+export interface QuestionData {
+  question: string
+  possibleAnsers: {
+    possibleResponses: string[]
+    correctAnswerPosition: number
   }
 }
