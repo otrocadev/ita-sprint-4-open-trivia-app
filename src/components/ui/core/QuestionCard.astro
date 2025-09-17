@@ -1,0 +1,23 @@
+---
+import ErrorDisplayingQuestion from 'src/components/ui/molecules/ErrorDisplayingQuestion.astro'
+import AnseredQuestionDialog from '../molecules/AnseredQuestionDialog.astro'
+---
+
+<ErrorDisplayingQuestion />
+<article
+  id="question-card"
+  class="hidden flex-col justify-center items-center text-center gap-8 bg-background-card p-8 border-2 border-gray-900 rounded-2xl shadow-2xl w-full max-w-3xl m-auto"
+>
+  <span id="question-text" class="text-xl"></span>
+  <div
+    id="options-container"
+    class="flex flex-col gap-4 w-fit justify-center items-center m-auto min-w-xl"
+  >
+  </div>
+</article>
+<AnseredQuestionDialog />
+
+<script>
+  import { printNewQuestion } from 'src/utils/questionDisplayUtils.ts'
+  printNewQuestion()
+</script>

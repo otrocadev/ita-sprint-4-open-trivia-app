@@ -24,13 +24,19 @@ import RestartButton from './atoms/RestartButton.astro'
 </header>
 
 <script type="module" is:inline>
-  import { getLocalStorageData } from '/src/services/localStorage.ts'
+  import { getGameStorageData } from '/src/utils/gameDataManagementUtils.ts'
 
-  const { coins, lives } = getLocalStorageData()
+  const { coins, lives } = getGameStorageData()
 
   const coinsElement = document.getElementById('coins')
   const livesElement = document.getElementById('lives')
 
-  coinsElement.textContent = coins
-  livesElement.textContent = lives
+  coinsElement.textContent = coins.toString()
+  livesElement.textContent = lives.toString()
+
+  window.addEventListener('gameData:update', (event) => {
+    const { coins, lives } = event.detail
+    coinsElement.textContent = coins.toString()
+    livesElement.textContent = lives.toString()
+  })
 </script>

@@ -8,63 +8,73 @@ import { getrandomCompliment } from 'src/utils/appUtils.ts'
 const randomCompliment = getrandomCompliment()
 ---
 
-<div
-  class="flex items-center justify-center h-full w-full text-outline text-shadow-custom"
+<section
+  id="answered-question-dialog"
+  class="absolute top-0 left-0 w-full h-full z-10 backdrop-blur-sm bg-black/50 hidden"
 >
-  <article
-    id="game-over-dialog"
-    class="text-white bg-theme-2 p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid-cols-3 hidden"
-  >
-    <Icon class="col-span-1 w-full h-full" name="headstone" />
-    <div class="col-span-2 flex flex-col gap-4 items-center justify-center">
-      <span class="text-5xl flex items-center gap-2">Game Over</span>
-      <span class="flex items-center gap-2 text-xl"
-        >You have run out of lives <Icon
-          class="w-12 h-12"
-          name="broken_heart"
-        /></span
-      >
-      <RestartButton />
-    </div>
-  </article>
-  <article
-    id="correct-answer-dialog"
-    class="text-white bg-correct p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid-cols-3 hidden"
-  >
-    <Icon class="col-span-1 w-full h-full" name="confetti" />
-    <div class="col-span-2 flex flex-col gap-4 items-center justify-center">
-      <span class="text-4xl flex items-center gap-2">{randomCompliment}</span>
-      <span class="flex items-center gap-2 text-xl"
-        >You responded correctly
-      </span>
-      <Placeholder>
-        +100
-        <Icon name="coin" />
-      </Placeholder>
-      <div class="flex justify-between gap-4">
-        <RestartButton />
-        <NextQuestionButton />
-      </div>
-    </div>
-  </article>
-  <article
-    id="incorrect-answer-dialog"
-    class="text-white bg-incorrect p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid-cols-3 hidden"
-  >
-    <Icon class="col-span-1 w-full h-full" name="cross" />
-    <div
-      class="col-span-2 flex flex-col gap-4 items-center justify-center text-outline"
+  <div class="flex items-center justify-center h-full w-full">
+    <article
+      id="card-dialog"
+      class="text-gray-900 p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid grid-cols-3"
     >
-      <span class="text-5xl flex items-center gap-2">Ouch!</span>
-      <span class="flex items-center gap-2 text-xl">Best luck next time! </span>
-      <Placeholder>
-        - 1
-        <Icon name="broken_heart" />
-      </Placeholder>
-      <div class="flex justify-between gap-4">
-        <RestartButton />
-        <NextQuestionButton />
-      </div>
-    </div>
-  </article>
-</div>
+      <Icon
+        class="col-span-1 w-full h-full hidden"
+        name="headstone"
+        id="headstone-icon"
+      />
+      <Icon
+        class="col-span-1 w-full h-full hidden"
+        name="confetti"
+        id="confetti-icon"
+      />
+      <Icon
+        class="col-span-1 w-full h-full hidden"
+        name="cross"
+        id="cross-icon"
+      />
+      <section class="col-span-2 flex-col gap-8 items-center justify-center">
+        <div id="endgame-info" class="hidden flex-col gap-4">
+          <span class="text-4xl flex items-center text-center gap-2"
+            >I am afraid this is the end for you...</span
+          >
+          <span class="flex items-center justify-center gap-2 text-xl"
+            >Looks like you have run out of lives <Icon
+              class="w-12 h-12"
+              name="broken_heart"
+            /></span
+          >
+        </div>
+        <div
+          id="correct-answer-info"
+          class="hidden flex-col gap-4 justify-center items-center"
+        >
+          <span class="text-4xl">You responded correctly</span>
+          <span class="flex flex-col items-center gap-2 text-xl"
+            ><p>Here goes the RandomCompliment</p>
+            <Placeholder>
+              + 100
+              <Icon name="coin" />
+            </Placeholder>
+          </span>
+        </div>
+        <div
+          id="incorrect-answer-info"
+          class="hidden flex-col gap-4 justify-center items-center"
+        >
+          <span class="text-4xl">You responded incorrectly</span>
+          <span class="flex flex-col items-center gap-2 text-xl">
+            <p>Here will go the API response</p>
+            <Placeholder>
+              - 1
+              <Icon name="broken_heart" />
+            </Placeholder>
+          </span>
+        </div>
+        <div class="flex justify-center items-center gap-4 mt-8">
+          <RestartButton />
+          <NextQuestionButton />
+        </div>
+      </section>
+    </article>
+  </div>
+</section>

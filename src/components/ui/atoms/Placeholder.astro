@@ -1,7 +1,11 @@
----
-const className: string = `flex gap-2 items-center justify-center text-principal-text-color px-4 py-2 rounded-md text-shadow-custom text-outline bg-black/20`
----
-
-<div class={className}>
+<div
+  class="flex gap-2 items-center justify-center text-principal-text-color px-4 py-2 rounded-md text-shadow-custom text-outline bg-black/20"
+>
   <slot />
 </div>
+
+<style scoped>
+  div {
+    font-family: var(--font-akira);
+  }
+</style>

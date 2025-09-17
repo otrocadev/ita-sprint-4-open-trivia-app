@@ -2,16 +2,16 @@
 import Button from 'src/components/ui/atoms/Button.astro'
 ---
 
-<div class="next-question-button">
+<div id="next-question-button">
   <Button color="theme-1"> Next question </Button>
 </div>
 
 <script type="module" is:inline>
-  const nextQuestionButton = document.querySelectorAll('.next-question-button')
+  import { printNewQuestion } from '/src/utils/questionDisplayUtils'
 
-  nextQuestionButton.forEach((button) => {
-    button.addEventListener('click', () => {
-      window.location.reload()
-    })
+  const nextQuestionButton = document.getElementById('next-question-button')
+
+  nextQuestionButton.addEventListener('click', () => {
+    printNewQuestion()
   })
 </script>

@@ -1,3 +1,8 @@
+export const resetLocalStorageData = () => {
+  window.localStorage.setItem('coins', '0')
+  window.localStorage.setItem('lives', '3')
+}
+
 export const getLocalStorageData = () => {
   const coins = window.localStorage.getItem('coins')
   const lives = window.localStorage.getItem('lives')
@@ -6,27 +11,4 @@ export const getLocalStorageData = () => {
     coins,
     lives,
   }
-}
-
-export const getCoinsData = () => {
-  const coins = window.localStorage.getItem('coins')
-  return parseInt(coins!)
-}
-
-export const updateCoinsData = (coins: number) => {
-  window.localStorage.setItem('coins', coins.toString())
-}
-
-export const getLivesData = () => {
-  const lives = window.localStorage.getItem('lives')
-  return parseInt(lives!)
-}
-
-export const updateLivesData = (lives: number) => {
-  window.localStorage.setItem('lives', lives.toString())
-}
-
-export const resetLocalStorageData = () => {
-  window.localStorage.setItem('coins', '0')
-  window.localStorage.setItem('lives', '3')
 }

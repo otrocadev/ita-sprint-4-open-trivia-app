@@ -1,10 +1,10 @@
 import {
-  resetLocalStorageData,
+  resetGameStorageData,
   getCoinsData,
   getLivesData,
   updateCoinsData,
   updateLivesData,
-} from 'src/services/localStorage.ts'
+} from 'src/utils/gameDataManagementUtils.ts'
 
 import { complimentsPool } from 'src/stored/static-content.ts'
 
@@ -20,8 +20,18 @@ export const decodeHtml = (html: string) => {
   return html
 }
 
+export const makeComponentVisible = (componentId: HTMLElement) => {
+  componentId.classList.remove('hidden')
+  componentId.classList.add('flex')
+}
+
+export const makeComponentHidden = (componentId: HTMLElement) => {
+  componentId.classList.remove('flex')
+  componentId.classList.add('hidden')
+}
+
 export const restartGame = () => {
-  resetLocalStorageData()
+  resetGameStorageData()
   window.location.reload()
 }
 
@@ -34,7 +44,6 @@ const addCoins = (coins: number) => {
 const removeLives = (lives: number) => {
   const livesData = getLivesData()
   updateLivesData(livesData - lives)
-  console.log(getLivesData())
 }
 
 export const manageResponse = (isCorrect: boolean) => {
