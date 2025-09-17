@@ -14,6 +14,9 @@ const endgameInfo = document.getElementById('endgame-info')
 const correctAnswerInfo = document.getElementById('correct-answer-info')
 const incorrectAnswerInfo = document.getElementById('incorrect-answer-info')
 const nextQuestionButton = document.getElementById('next-question-button')
+const errorDisplayingQuestion = document.getElementById(
+  'error-displaying-question'
+)
 
 const displayQuestionAnswers = (
   questionData: QuestionData,
@@ -52,6 +55,7 @@ export const manageOptionButtonClases = (
 
 export const restartDialogDisplay = () => {
   answeredQuestionDialog?.classList.add('hidden')
+  errorDisplayingQuestion?.classList.add('hidden')
   // reset the dialog component
   nextQuestionButton?.classList.remove('hidden')
   // hide all the info
@@ -90,32 +94,38 @@ export const manageAnsweredQuestionDialog = (gameStatus: string) => {
 }
 
 export const printNewQuestion = async () => {
-  const questionData = await getQuestionData()
-  const questionCard = document.getElementById('question-card')
-  const questionText = document.getElementById('question-text')
-  const optionsContainer = document.getElementById('options-container')
+  try {
+    const questionData = await getQuestionData()
+    const questionCard = document.getElementById('question-card')
+    const questionText = document.getElementById('question-text')
+    const optionsContainer = document.getElementById('options-container')
 
-  optionsContainer!.innerHTML = ''
-  restartDialogDisplay()
-  makeComponentVisible(questionCard!)
-  displayQuestionData(questionData, questionText!, optionsContainer!)
+    optionsContainer!.innerHTML = ''
+    restartDialogDisplay()
+    makeComponentVisible(questionCard!)
+    displayQuestionData(questionData, questionText!, optionsContainer!)
 
-  // interaction with the buttons once the question is displayed
-  let isAlreadyClicked = false
-  const responseButtons = document.querySelectorAll('.option-button')
-  responseButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      if (isAlreadyClicked) return
-      isAlreadyClicked = true
+    // interaction with the buttons once the question is displayed
+    let isAlreadyClicked = false
+    const responseButtons = document.querySelectorAll('.option-button')
+    responseButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        if (isAlreadyClicked) return
+        isAlreadyClicked = true
 
-      const isCorrect =
-        index === questionData.possibleAnsers.correctAnswerPosition
+        const isCorrect =
+          index === questionData.possibleAnsers.correctAnswerPosition
 
-      // Change visually the button (red or green)
-      manageOptionButtonClases(button, isCorrect)
-      setTimeout(() => {
-        manageAnsweredQuestionDialog(manageResponse(isCorrect))
-      }, 2000)
+        // Change visually the button (red or green)
+        manageOptionButtonClases(button, isCorrect)
+        setTimeout(() => {
+          manageAnsweredQuestionDialog(manageResponse(isCorrect))
+        }, 2000)
+      })
     })
-  })
+  } catch (err) {
+    errorDisplayingQuestion?.classList.remove('hidden')
+    console.error('Error on printing the question', err)
+    throw err
+  }
 }

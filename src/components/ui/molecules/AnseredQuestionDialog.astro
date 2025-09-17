@@ -32,38 +32,47 @@ const randomCompliment = getrandomCompliment()
         name="cross"
         id="cross-icon"
       />
-      <div class="col-span-2 flex flex-col gap-4 items-center justify-center">
-        <span class="card-title" class="text-5xl flex items-center gap-2"
-          >Inject the text depending on the correctness of the answer</span
-        >
-        <span id="endgame-info" class="hidden items-center gap-2 text-xl"
-          >You have run out of lives <Icon
-            class="w-12 h-12"
-            name="broken_heart"
-          /></span
-        >
-        <span id="correct-answer-info" class="hidden items-center gap-2 text-xl"
-          >You responded correctly
-          <Placeholder>
-            + 100
-            <Icon name="coin" />
-          </Placeholder>
-        </span>
-        <span
-          id="incorrect-answer-info"
-          class="hidden items-center gap-2 text-xl"
-        >
-          <p>Here will go the Ai response</p>
-          <Placeholder>
-            - 1
-            <Icon name="broken_heart" />
-          </Placeholder>
-        </span>
-        <div class="flex justify-between gap-4">
+      <section class="col-span-2 flex-col gap-8 items-center justify-center">
+        <div id="endgame-info" class="hidden flex-col gap-4">
+          <span class="text-4xl flex items-center gap-2"
+            >I am afraid this is the end for you...</span
+          >
+          <span class="flex items-center justify-center gap-2 text-xl"
+            >Looks like you have run out of lives <Icon
+              class="w-12 h-12"
+              name="broken_heart"
+            /></span
+          >
+        </div>
+        <div id="correct-answer-info" class="hidden">
+          <span class="text-4xl flex items-center gap-2"
+            >You responded correctly</span
+          >
+          <span class="flex flex-col items-center gap-2 text-xl"
+            ><p>Here goes the RandomCompliment</p>
+            <Placeholder>
+              + 100
+              <Icon name="coin" />
+            </Placeholder>
+          </span>
+        </div>
+        <div id="incorrect-answer-info" class="hidden">
+          <span class="text-4xl flex items-center gap-2"
+            >You responded incorrectly</span
+          >
+          <span class="flex flex-col items-center gap-2 text-xl">
+            <p>Here will go the Ai response</p>
+            <Placeholder>
+              - 1
+              <Icon name="broken_heart" />
+            </Placeholder>
+          </span>
+        </div>
+        <div class="flex justify-center items-center gap-4 mt-8">
           <RestartButton />
           <NextQuestionButton />
         </div>
-      </div>
+      </section>
     </article>
   </div>
 </section>
