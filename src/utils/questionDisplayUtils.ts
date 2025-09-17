@@ -86,10 +86,13 @@ export const manageAnsweredQuestionDialog = (gameStatus: string) => {
     confettiIcon?.classList.remove('hidden')
     confettiIcon?.classList.add('flex')
     correctAnswerInfo?.classList.remove('hidden')
+    correctAnswerInfo?.classList.add('flex')
   } else if (gameStatus === 'incorrect') {
     cardDialog?.classList.add('bg-incorrect')
     crossIcon?.classList.remove('hidden')
+    crossIcon?.classList.add('flex')
     incorrectAnswerInfo?.classList.remove('hidden')
+    incorrectAnswerInfo?.classList.add('flex')
   }
 }
 

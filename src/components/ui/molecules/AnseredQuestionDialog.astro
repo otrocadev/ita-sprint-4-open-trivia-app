@@ -34,7 +34,7 @@ const randomCompliment = getrandomCompliment()
       />
       <section class="col-span-2 flex-col gap-8 items-center justify-center">
         <div id="endgame-info" class="hidden flex-col gap-4">
-          <span class="text-4xl flex items-center gap-2"
+          <span class="text-4xl flex items-center text-center gap-2"
             >I am afraid this is the end for you...</span
           >
           <span class="flex items-center justify-center gap-2 text-xl"
@@ -44,10 +44,11 @@ const randomCompliment = getrandomCompliment()
             /></span
           >
         </div>
-        <div id="correct-answer-info" class="hidden">
-          <span class="text-4xl flex items-center gap-2"
-            >You responded correctly</span
-          >
+        <div
+          id="correct-answer-info"
+          class="hidden flex-col gap-4 justify-center items-center"
+        >
+          <span class="text-4xl">You responded correctly</span>
           <span class="flex flex-col items-center gap-2 text-xl"
             ><p>Here goes the RandomCompliment</p>
             <Placeholder>
@@ -56,12 +57,13 @@ const randomCompliment = getrandomCompliment()
             </Placeholder>
           </span>
         </div>
-        <div id="incorrect-answer-info" class="hidden">
-          <span class="text-4xl flex items-center gap-2"
-            >You responded incorrectly</span
-          >
+        <div
+          id="incorrect-answer-info"
+          class="hidden flex-col gap-4 justify-center items-center"
+        >
+          <span class="text-4xl">You responded incorrectly</span>
           <span class="flex flex-col items-center gap-2 text-xl">
-            <p>Here will go the Ai response</p>
+            <p>Here will go the API response</p>
             <Placeholder>
               - 1
               <Icon name="broken_heart" />
