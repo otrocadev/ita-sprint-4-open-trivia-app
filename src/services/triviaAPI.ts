@@ -43,6 +43,7 @@ const formatQuestionData = (questionData: TriviaResponse) => {
 export const getQuestionData = async () => {
   try {
     const questionData = await fetchAPI(TRIVIA_QUESTION_ENDPOINT)
+    const questionData = await fetchAPI(TRIVIA_QUESTION_ENDPOINT)
     return formatQuestionData(questionData)
   } catch (err) {
     console.error('Error on fetching the question data:', err)
