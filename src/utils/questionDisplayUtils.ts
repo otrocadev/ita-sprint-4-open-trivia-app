@@ -83,7 +83,7 @@ const manageAnsweredQuestionDialog = async (gameStatus: string) => {
     nextQuestionButton?.classList.add('hidden')
   } else if (gameStatus === 'correct') {
     const randomComplimentDialog = document.getElementById('random-compliment')
-    randomComplimentDialog!.textContent = await getrandomCompliment()
+    randomComplimentDialog!.textContent = (await getrandomCompliment()) ?? ''
     cardDialog?.classList.add('bg-correct')
     confettiIcon?.classList.remove('hidden')
     confettiIcon?.classList.add('flex')
