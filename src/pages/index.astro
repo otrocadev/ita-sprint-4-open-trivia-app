@@ -6,11 +6,3 @@ import Question from 'src/components/ui/core/QuestionCard.astro'
 <Layout>
   <Question />
 </Layout>
-
-<script type="module" is:inline>
-  import { getLibInsult } from '/src/services/libInsultAPI.ts'
-  import { getMotivationalQuote } from '/src/services/quotableAPI.ts'
-
-  console.log(await getLibInsult())
-  console.log(await getMotivationalQuote())
-</script>
