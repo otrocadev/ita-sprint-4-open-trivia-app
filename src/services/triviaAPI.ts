@@ -4,6 +4,10 @@ import type { TriviaResponse } from 'src/types/triviaTypes.ts'
 import type { QuestionResponse } from 'src/types/triviaTypes'
 
 const triviaBaseURL = import.meta.env.PUBLIC_TRIVIA_API
+const amountOfQuestions = 1
+const questionType = 'multiple'
+
+const TRIVIA_QUESTION_ENDPOINT = `${triviaBaseURL}?amount=${amountOfQuestions}&type=${questionType}`
 
 export const getPossibleAnswers = (questionData: QuestionResponse) => {
   let possibleResponses = [...questionData.incorrect_answers]
@@ -38,7 +42,7 @@ const formatQuestionData = (questionData: TriviaResponse) => {
 
 export const getQuestionData = async () => {
   try {
-    const questionData = await fetchAPI(triviaBaseURL)
+    const questionData = await fetchAPI(TRIVIA_QUESTION_ENDPOINT)
     return formatQuestionData(questionData)
   } catch (err) {
     console.error('Error on fetching the question data:', err)

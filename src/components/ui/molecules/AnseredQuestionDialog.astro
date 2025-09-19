@@ -3,9 +3,6 @@ import RestartButton from '../atoms/RestartButton.astro'
 import NextQuestionButton from '../atoms/NextQuestionButton.astro'
 import Placeholder from '../atoms/Placeholder.astro'
 import { Icon } from 'astro-icon/components'
-import { getrandomCompliment } from 'src/utils/appUtils.ts'
-
-const randomCompliment = getrandomCompliment()
 ---
 
 <section
@@ -50,7 +47,7 @@ const randomCompliment = getrandomCompliment()
         >
           <span class="text-4xl">You responded correctly</span>
           <span class="flex flex-col items-center gap-2 text-xl"
-            ><p>Here goes the RandomCompliment</p>
+            ><p class="text-center" id="random-compliment"></p>
             <Placeholder>
               + 100
               <Icon name="coin" />
@@ -63,7 +60,7 @@ const randomCompliment = getrandomCompliment()
         >
           <span class="text-4xl">You responded incorrectly</span>
           <span class="flex flex-col items-center gap-2 text-xl">
-            <p>Here will go the API response</p>
+            <p class="text-center" id="failed-question-feed-back"></p>
             <Placeholder>
               - 1
               <Icon name="broken_heart" />
