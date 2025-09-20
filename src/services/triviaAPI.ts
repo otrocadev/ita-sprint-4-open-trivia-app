@@ -3,11 +3,11 @@ import { decodeHtml } from 'src/utils/appUtils'
 import type { TriviaResponse } from 'src/types/triviaTypes.ts'
 import type { QuestionResponse } from 'src/types/triviaTypes'
 
-const triviaBaseURL = import.meta.env.PUBLIC_TRIVIA_API
+const TRIVIA_API_BASE_URL = import.meta.env.PUBLIC_TRIVIA_API
 const amountOfQuestions = 1
 const questionType = 'multiple'
 
-const TRIVIA_QUESTION_ENDPOINT = `${triviaBaseURL}?amount=${amountOfQuestions}&type=${questionType}`
+const TRIVIA_QUESTION_ENDPOINT = `${TRIVIA_API_BASE_URL}?amount=${amountOfQuestions}&type=${questionType}`
 
 export const getPossibleAnswers = (questionData: QuestionResponse) => {
   let possibleResponses = [...questionData.incorrect_answers]
