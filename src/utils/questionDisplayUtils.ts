@@ -1,11 +1,7 @@
 import { getQuestionData } from 'src/services/triviaAPI'
 import type { QuestionData } from 'src/types/triviaTypes'
-import {
-  getFailedQuestionFeedBack,
-  getrandomCompliment,
-  makeComponentVisible,
-  manageResponse,
-} from 'src/utils/appUtils'
+import { makeComponentVisible } from 'src/utils/appUtils'
+import { manageResponse } from 'src/utils/appUtils.ts'
 
 const answeredQuestionDialog = document.getElementById(
   'answered-question-dialog'
@@ -44,7 +40,10 @@ const displayQuestionData = (
   displayQuestionAnswers(questionData, optionsContainer)
 }
 
-const manageOptionButtonClases = (button: Element, isCorrect: boolean) => {
+export const manageOptionButtonClases = (
+  button: Element,
+  isCorrect: boolean
+) => {
   if (isCorrect) {
     button.classList.remove('bg-theme-1')
     button.classList.add('bg-correct')
@@ -54,7 +53,7 @@ const manageOptionButtonClases = (button: Element, isCorrect: boolean) => {
   }
 }
 
-const restartDialogDisplay = () => {
+export const restartDialogDisplay = () => {
   answeredQuestionDialog?.classList.add('hidden')
   errorDisplayingQuestion?.classList.add('hidden')
   // reset the dialog component
@@ -73,7 +72,8 @@ const restartDialogDisplay = () => {
   crossIcon?.classList.add('hidden')
 }
 
-const manageAnsweredQuestionDialog = async (gameStatus: string) => {
+export const manageAnsweredQuestionDialog = (gameStatus: string) => {
+  answeredQuestionDialog?.classList.remove('hidden')
   if (gameStatus === 'game-over') {
     cardDialog?.classList.add('bg-theme-2')
     headstoneIcon?.classList.remove('hidden')
@@ -82,27 +82,18 @@ const manageAnsweredQuestionDialog = async (gameStatus: string) => {
     endgameInfo?.classList.add('flex')
     nextQuestionButton?.classList.add('hidden')
   } else if (gameStatus === 'correct') {
-    const randomComplimentDialog = document.getElementById('random-compliment')
-    randomComplimentDialog!.textContent = (await getrandomCompliment()) ?? ''
     cardDialog?.classList.add('bg-correct')
     confettiIcon?.classList.remove('hidden')
     confettiIcon?.classList.add('flex')
     correctAnswerInfo?.classList.remove('hidden')
     correctAnswerInfo?.classList.add('flex')
   } else if (gameStatus === 'incorrect') {
-    const failedQuestionFeedBackDialog = document.getElementById(
-      'failed-question-feed-back'
-    )
-    failedQuestionFeedBackDialog!.textContent =
-      await getFailedQuestionFeedBack()
     cardDialog?.classList.add('bg-incorrect')
     crossIcon?.classList.remove('hidden')
     crossIcon?.classList.add('flex')
     incorrectAnswerInfo?.classList.remove('hidden')
     incorrectAnswerInfo?.classList.add('flex')
   }
-
-  answeredQuestionDialog?.classList.remove('hidden')
 }
 
 export const printNewQuestion = async () => {
@@ -130,8 +121,8 @@ export const printNewQuestion = async () => {
 
         // Change visually the button (red or green)
         manageOptionButtonClases(button, isCorrect)
-        setTimeout(async () => {
-          await manageAnsweredQuestionDialog(await manageResponse(isCorrect))
+        setTimeout(() => {
+          manageAnsweredQuestionDialog(manageResponse(isCorrect))
         }, 2000)
       })
     })
