@@ -1,5 +1,7 @@
 import { resetLocalStorageData } from 'src/services/localStorage.ts'
 import { gameData } from 'src/stored/gameData.ts'
+import { userResults } from 'src/stored/gameData'
+import type { QuestionData } from 'src/types/triviaTypes'
 
 const emitGameDataUpdate = () => {
   if (typeof window === 'undefined') return
@@ -44,4 +46,20 @@ export const resetGameStorageData = () => {
   gameData.lives = 3
   resetLocalStorageData()
   emitGameDataUpdate()
+}
+
+export const addUserResult = (
+  questionData: QuestionData,
+  userResponse: string,
+  isCorrect: boolean
+) => {
+  const correctAnswerIndex = questionData.possibleAnsers.correctAnswerPosition
+  userResults.push({
+    question: questionData.question,
+    possibleAnswers: questionData.possibleAnsers.possibleResponses,
+    userAnswer: userResponse,
+    correctAnswer:
+      questionData.possibleAnsers.possibleResponses[correctAnswerIndex] ?? '',
+    anseredCorrectly: isCorrect,
+  })
 }
