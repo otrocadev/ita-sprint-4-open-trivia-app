@@ -10,7 +10,6 @@ export const getCurrentWeather = async () => {
     const { latitude, longitude } = await getLocation()
     const currentWeatherEndpoint = `${OPEN_METEO_API_BASE_URL}?latitude=${latitude}&longitude=${longitude}&${params}`
     const currentWeatherData = await fetchAPI(currentWeatherEndpoint)
-    console.log(currentWeatherData)
     return formatWeatherInfo(currentWeatherData)
   } catch (error) {
     console.error(error)
