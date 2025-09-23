@@ -1,4 +1,3 @@
-import { resetLocalStorageData } from 'src/services/localStorage.ts'
 import { gameData } from 'src/stored/gameData.ts'
 import { userResults } from 'src/stored/gameData'
 import type { QuestionData } from 'src/types/triviaTypes'
