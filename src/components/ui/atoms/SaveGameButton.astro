@@ -1,0 +1,21 @@
+---
+import Button from 'src/components/ui/atoms/Button.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<div class="save-game-button">
+  <Button color="theme-1">
+    <Icon class="w-6 h-6" name="floppy" />
+  </Button>
+</div>
+
+<script type="module" is:inline>
+  import { saveGameToLocalStorage } from '/src/services/localStorage.ts'
+
+  const saveGameBtn = document.querySelectorAll('.save-game-button')
+  saveGameBtn.forEach((button) => {
+    button.addEventListener('click', () => {
+      saveGameToLocalStorage()
+    })
+  })
+</script>

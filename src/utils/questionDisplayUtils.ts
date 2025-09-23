@@ -1,4 +1,5 @@
 import { getQuestionData } from 'src/services/triviaAPI'
+import { addUserResult } from 'src/utils/gameDataManagementUtils'
 import type { QuestionData } from 'src/types/triviaTypes'
 import {
   getFailedQuestionFeedBack,
@@ -127,6 +128,8 @@ export const printNewQuestion = async () => {
 
         const isCorrect =
           index === questionData.possibleAnsers.correctAnswerPosition
+
+        addUserResult(questionData, button.textContent!, isCorrect)
 
         // Change visually the button (red or green)
         manageOptionButtonClases(button, isCorrect)

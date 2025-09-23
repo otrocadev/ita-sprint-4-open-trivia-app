@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon/components'
+const { id } = Astro.props
+---
+
+<div
+  id={id}
+  class="toast-success hidden absolute top-8 right-8 flex items-center w-full max-w-xs p-4 mb-4 shadow-custom border-2 border-shadow-text-color text-principal-text-color bg-theme-1 rounded-lg"
+>
+  <Icon class="w-6 h-6" name="check_mark" />
+  <div class="ms-3 text-lg font-normal"><slot /></div>
+  <button
+    type="button"
+    class="ms-auto -mx-1.5 -my-1.5 p-1.5 inline-flex items-center justify-center h-8 w-8 hover:text-gray-500 text-white"
+  >
+    <Icon class="w-6 h-6" name="square_cross" />
+  </button>
+</div>
+
+<script type="module" is:inline>
+  const toastSuccess = document.querySelectorAll('.toast-success')
+  toastSuccess.forEach((toast) => {
+    toast.addEventListener('click', () => {
+      toast.classList.add('hidden')
+    })
+  })
+</script>

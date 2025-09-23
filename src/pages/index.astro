@@ -1,8 +1,11 @@
 ---
 import Layout from 'src/components/layouts/Layout.astro'
 import Question from 'src/components/ui/core/QuestionCard.astro'
+import Notification from 'src/components/ui/molecules/Notification.astro'
 ---
 
 <Layout>
   <Question />
+  <Notification id="toast-game-saved">Game saved successfully</Notification>
+  <Notification id="toast-game-loaded">Game loaded successfully</Notification>
 </Layout>
