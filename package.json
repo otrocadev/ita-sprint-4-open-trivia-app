@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "test": "jest",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -13,6 +14,14 @@
     "astro": "^5.12.8",
     "astro-icon": "^1.1.5",
     "eslint": "^9.33.0",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "test": "^3.3.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.1.3",
+    "ts-jest": "^29.4.4",
+    "typescript": "^5.9.2",
+    "jest-environment-jsdom": "^30.1.3"
   }
 }
