@@ -9,10 +9,10 @@ import { Icon } from 'astro-icon/components'
   id="answered-question-dialog"
   class="absolute top-0 left-0 w-full h-full z-10 backdrop-blur-sm bg-black/50 hidden"
 >
-  <div class="flex items-center justify-center h-full w-full">
+  <div class="flex items-center justify-center h-full w-full px-4">
     <article
       id="card-dialog"
-      class="text-gray-900 p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid grid-cols-3"
+      class="text-gray-900 p-8 lg:p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid grid-cols-1 lg:grid-cols-3"
     >
       <Icon
         class="col-span-1 w-full h-full hidden"
@@ -31,10 +31,12 @@ import { Icon } from 'astro-icon/components'
       />
       <section class="col-span-2 flex-col gap-8 items-center justify-center">
         <div id="endgame-info" class="hidden flex-col gap-4">
-          <span class="text-4xl flex items-center text-center gap-2"
+          <span
+            class="lg:text-4xl text-2xl font-akira flex items-center text-center gap-2"
             >I am afraid this is the end for you...</span
           >
-          <span class="flex items-center justify-center gap-2 text-xl"
+          <span
+            class="flex items-center justify-center gap-2 text-center text-xl"
             >Looks like you have run out of lives <Icon
               class="w-12 h-12"
               name="broken_heart"
@@ -45,7 +47,9 @@ import { Icon } from 'astro-icon/components'
           id="correct-answer-info"
           class="hidden flex-col gap-4 justify-center items-center"
         >
-          <span class="text-4xl">You responded correctly</span>
+          <span class="lg:text-4xl text-2xl text-center font-akira"
+            >You responded correctly</span
+          >
           <span class="flex flex-col items-center gap-2 text-xl"
             ><p class="text-center" id="random-compliment"></p>
             <Placeholder>
@@ -58,7 +62,9 @@ import { Icon } from 'astro-icon/components'
           id="incorrect-answer-info"
           class="hidden flex-col gap-4 justify-center items-center"
         >
-          <span class="text-4xl">You responded incorrectly</span>
+          <span class="lg:text-4xl text-2xl text-center font-akira"
+            >You responded incorrectly</span
+          >
           <span class="flex flex-col items-center gap-2 text-xl">
             <p class="text-center" id="failed-question-feed-back"></p>
             <Placeholder>
@@ -67,7 +73,9 @@ import { Icon } from 'astro-icon/components'
             </Placeholder>
           </span>
         </div>
-        <div class="flex justify-center items-center gap-4 mt-8">
+        <div
+          class="flex flex-col lg:flex-row justify-center items-center gap-4 mt-8"
+        >
           <RestartButton />
           <NextQuestionButton />
         </div>

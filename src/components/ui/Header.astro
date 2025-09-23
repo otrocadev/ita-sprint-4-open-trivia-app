@@ -12,11 +12,6 @@ import LoadGameButton from './atoms/LoadGameButton.astro'
   >
     TRIVIA
   </h1>
-  <div class="flex items-center flex-wrap justify-center gap-4 p-4">
-    <RestartButton />
-    <LoadGameButton />
-    <SaveGameButton />
-  </div>
 
   <div class="flex items-center justify-center gap-4 p-4">
     <Placeholder>
@@ -27,6 +22,12 @@ import LoadGameButton from './atoms/LoadGameButton.astro'
       <Icon name="heart" />
       <span id="lives">0</span>
     </Placeholder>
+  </div>
+
+  <div class="flex items-center flex-wrap justify-center gap-4 p-4">
+    <RestartButton />
+    <LoadGameButton />
+    <SaveGameButton />
   </div>
 </header>
 
