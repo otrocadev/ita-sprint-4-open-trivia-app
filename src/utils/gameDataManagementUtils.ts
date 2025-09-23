@@ -3,7 +3,7 @@ import { gameData } from 'src/stored/gameData.ts'
 import { userResults } from 'src/stored/gameData'
 import type { QuestionData } from 'src/types/triviaTypes'
 
-const emitGameDataUpdate = () => {
+export const emitGameDataUpdate = () => {
   if (typeof window === 'undefined') return
   const event = new CustomEvent('gameData:update', {
     detail: { coins: gameData.coins, lives: gameData.lives },
@@ -42,10 +42,13 @@ export const updateLivesData = (lives: number) => {
 }
 
 export const resetGameStorageData = () => {
-  gameData.coins = 0
-  gameData.lives = 3
-  resetLocalStorageData()
-  emitGameDataUpdate()
+  try {
+    gameData.coins = 0
+    gameData.lives = 3
+    emitGameDataUpdate()
+  } catch (error) {
+    console.error('Error resetting game storage data:', error)
+  }
 }
 
 export const addUserResult = (
@@ -62,4 +65,9 @@ export const addUserResult = (
       questionData.possibleAnsers.possibleResponses[correctAnswerIndex] ?? '',
     anseredCorrectly: isCorrect,
   })
+}
+
+export const showNotification = (toastType: string) => {
+  const toastSuccess = document.getElementById(`${toastType}`)
+  toastSuccess?.classList.remove('hidden')
 }
