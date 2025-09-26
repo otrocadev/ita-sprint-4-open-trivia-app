@@ -1,6 +1,6 @@
-import { gameData } from 'src/stored/gameData.ts'
-import { userResults } from 'src/stored/gameData'
-import type { QuestionData } from 'src/types/triviaTypes'
+import { gameData } from '../stored/gameData.ts'
+import { userResults } from '../stored/gameData'
+import type { QuestionData } from '../types/triviaTypes'
 
 export const emitGameDataUpdate = () => {
   if (typeof window === 'undefined') return
