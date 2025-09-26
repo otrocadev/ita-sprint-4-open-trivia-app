@@ -7,8 +7,6 @@ import {
 } from 'src/utils/gameDataManagementUtils.ts'
 
 import { complimentsPool } from 'src/stored/static-content.ts'
-import { getInsult } from 'src/services/inultAPI'
-import { getMotivationalQuote } from 'src/services/motivationAPI'
 
 export const decodeHtml = (html: string) => {
   html = html.replace(/&quot;/g, '"')
@@ -48,7 +46,7 @@ const removeLives = (lives: number) => {
   updateLivesData(livesData - lives)
 }
 
-export const manageResponse = async (isCorrect: boolean) => {
+export const manageResponse = (isCorrect: boolean) => {
   if (isCorrect) {
     addCoins(100)
     return 'correct'
@@ -65,13 +63,4 @@ export const manageResponse = async (isCorrect: boolean) => {
 export const getrandomCompliment = () => {
   const randomIndex = Math.floor(Math.random() * complimentsPool.length)
   return complimentsPool[randomIndex]
-}
-
-export const getFailedQuestionFeedBack = async () => {
-  const randomIndex = Math.floor(Math.random() * 2)
-  if (randomIndex === 0) {
-    return await getInsult()
-  } else {
-    return await getMotivationalQuote()
-  }
 }
