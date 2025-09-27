@@ -1,32 +1,36 @@
-# Astro Starter Kit: Basics
+# Sprint 4. Open Trivia App - IT Academy Frontend Course
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+## 🎯 Objectives
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+The objective in this repo is to manage different APIs and manage the interactions between them.
+The APIs implemented are the following:
 
-## 🚀 Project Structure
+- To load trivia questions, **Open Tribia DB (OTDB)**  (https://opentdb.com/)
+- When failing an answer randomly, an insult or a motivational quote will display. To manage responses when failing a question, it has been used:
+  - **LibInsult** (https://insult.mattbas.org/)
+  - **Quotable API** (https://api.quotable.io)
+- To show the current weather in our location **Open Meteo API** (https://open-meteo.com/) is the option chosen.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Requeriments
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+### Level 1
+- [X] When the APP starts, the first question should appear on screen.
+- [X] Once the question is answered, the app should fetch another question.
+- [X] An array will be saving the info of the already answered questions.
+## Level 2
+- [X] To add more functionality, the weather info of the current location should be displayed.
+- [X] It should be two APIs that are fetched depending on a random factor.
+## Level 3
+- [X] Create a compelling UI to have a smoother experiense.
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## 🖥️ Preview of the project
+
+// Will go the video here
+
+## 🛠️ Stack used
+- 🚀 **Astro**
+- 🎨 **Tailwind**
+- 🟡 **JavaScript**
 
 ## 🧞 Commands
 
@@ -36,11 +40,8 @@ All commands are run from the root of the project, from a terminal:
 | :------------------------ | :----------------------------------------------- |
 | `pnpm install`             | Installs dependencies                            |
 | `pnpm dev`             | Starts local dev server at `localhost:4321`      |
+| `pnpm run test`             | Run jest suite tests   |
 | `pnpm build`           | Build your production site to `./dist/`          |
 | `pnpm preview`         | Preview your build locally, before deploying     |
 | `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
