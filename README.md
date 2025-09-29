@@ -25,7 +25,7 @@ The APIs implemented are the following:
 
 ## 🖥️ Preview of the project
 
-// Will go the video here
+https://github.com/user-attachments/assets/9e017573-4e9f-4166-9cb8-35aa136252d1
 
 ## 🛠️ Stack used
 - 🚀 **Astro**
@@ -45,3 +45,9 @@ All commands are run from the root of the project, from a terminal:
 | `pnpm preview`         | Preview your build locally, before deploying     |
 | `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
+
+## 🏗️ Things to improve 
+- [ ] Add tets for each one of the the APIs implemented on the project.
+- [ ] Smooth the experience with countdown on each question and more feedback for the user
+- [ ] Add emojis on the question card depending on wich one is the cathegory of the question.
+- [ ] Make insult/compliments ratio configurable (choose which percentatge you prefer of each one).
