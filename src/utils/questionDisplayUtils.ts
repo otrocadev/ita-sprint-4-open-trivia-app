@@ -1,4 +1,5 @@
 import { getQuestionData } from 'src/services/triviaAPI'
+import { addUserResult } from 'src/utils/gameDataManagementUtils'
 import type { QuestionData } from 'src/types/triviaTypes'
 import {
   getFailedQuestionFeedBack,
@@ -44,7 +45,10 @@ const displayQuestionData = (
   displayQuestionAnswers(questionData, optionsContainer)
 }
 
-const manageOptionButtonClases = (button: Element, isCorrect: boolean) => {
+export const manageOptionButtonClases = (
+  button: Element,
+  isCorrect: boolean
+) => {
   if (isCorrect) {
     button.classList.remove('bg-theme-1')
     button.classList.add('bg-correct')
@@ -54,7 +58,7 @@ const manageOptionButtonClases = (button: Element, isCorrect: boolean) => {
   }
 }
 
-const restartDialogDisplay = () => {
+export const restartDialogDisplay = () => {
   answeredQuestionDialog?.classList.add('hidden')
   errorDisplayingQuestion?.classList.add('hidden')
   // reset the dialog component
@@ -73,7 +77,7 @@ const restartDialogDisplay = () => {
   crossIcon?.classList.add('hidden')
 }
 
-const manageAnsweredQuestionDialog = async (gameStatus: string) => {
+export const manageAnsweredQuestionDialog = async (gameStatus: string) => {
   if (gameStatus === 'game-over') {
     cardDialog?.classList.add('bg-theme-2')
     headstoneIcon?.classList.remove('hidden')
@@ -128,10 +132,12 @@ export const printNewQuestion = async () => {
         const isCorrect =
           index === questionData.possibleAnsers.correctAnswerPosition
 
+        addUserResult(questionData, button.textContent!, isCorrect)
+
         // Change visually the button (red or green)
         manageOptionButtonClases(button, isCorrect)
         setTimeout(async () => {
-          await manageAnsweredQuestionDialog(await manageResponse(isCorrect))
+          await manageAnsweredQuestionDialog(manageResponse(isCorrect))
         }, 2000)
       })
     })

@@ -2,15 +2,17 @@
 import { Icon } from 'astro-icon/components'
 import Placeholder from './atoms/Placeholder.astro'
 import RestartButton from './atoms/RestartButton.astro'
+import SaveGameButton from './atoms/SaveGameButton.astro'
+import LoadGameButton from './atoms/LoadGameButton.astro'
 ---
 
-<header class="flex items-center justify-between p-4">
+<header class="flex flex-col lg:flex-row items-center justify-between p-4">
   <h1
     class="text-theme-1 text-4xl sm:text-6xl text-shadow-custom-xl text-outline-xl"
   >
     TRIVIA
   </h1>
-  <RestartButton />
+
   <div class="flex items-center justify-center gap-4 p-4">
     <Placeholder>
       <Icon name="coin" />
@@ -20,6 +22,12 @@ import RestartButton from './atoms/RestartButton.astro'
       <Icon name="heart" />
       <span id="lives">0</span>
     </Placeholder>
+  </div>
+
+  <div class="flex items-center flex-wrap justify-center gap-4 p-4">
+    <RestartButton />
+    <LoadGameButton />
+    <SaveGameButton />
   </div>
 </header>
 

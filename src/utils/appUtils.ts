@@ -48,7 +48,7 @@ const removeLives = (lives: number) => {
   updateLivesData(livesData - lives)
 }
 
-export const manageResponse = async (isCorrect: boolean) => {
+export const manageResponse = (isCorrect: boolean) => {
   if (isCorrect) {
     addCoins(100)
     return 'correct'

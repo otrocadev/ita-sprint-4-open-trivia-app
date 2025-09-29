@@ -1,0 +1,22 @@
+---
+import Button from 'src/components/ui/atoms/Button.astro'
+import { Icon } from 'astro-icon/components'
+---
+
+<div class="load-game-button">
+  <Button color="theme-1">
+    <Icon class="w-6 h-6" name="open_folder" />
+    Load
+  </Button>
+</div>
+
+<script type="module" is:inline>
+  import { loadGameFromLocalStorage } from '/src/services/localStorage.ts'
+
+  const loadGameBtn = document.querySelectorAll('.load-game-button')
+  loadGameBtn.forEach((button) => {
+    button.addEventListener('click', () => {
+      loadGameFromLocalStorage()
+    })
+  })
+</script>
