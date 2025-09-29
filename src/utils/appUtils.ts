@@ -4,11 +4,15 @@ import {
   getLivesData,
   updateCoinsData,
   updateLivesData,
-} from 'src/utils/gameDataManagementUtils.ts'
+} from '../utils/gameDataManagementUtils.ts'
 
+<<<<<<< HEAD
 import { complimentsPool } from 'src/stored/static-content.ts'
 import { getInsult } from 'src/services/inultAPI'
 import { getMotivationalQuote } from 'src/services/motivationAPI'
+=======
+import { complimentsPool } from '../stored/static-content.ts'
+>>>>>>> fc132878efcbe25ec303862f5c65210419b56640
 
 export const decodeHtml = (html: string) => {
   html = html.replace(/&quot;/g, '"')
