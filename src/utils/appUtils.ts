@@ -4,9 +4,9 @@ import {
   getLivesData,
   updateCoinsData,
   updateLivesData,
-} from 'src/utils/gameDataManagementUtils.ts'
+} from '../utils/gameDataManagementUtils.ts'
 
-import { complimentsPool } from 'src/stored/static-content.ts'
+import { complimentsPool } from '../stored/static-content.ts'
 
 export const decodeHtml = (html: string) => {
   html = html.replace(/&quot;/g, '"')
