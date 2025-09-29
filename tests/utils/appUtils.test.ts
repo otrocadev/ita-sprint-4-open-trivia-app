@@ -93,6 +93,7 @@ describe('Function "manageResponse"', () => {
   it('should return "incorrect" when the response is not isCorrect', () => {
     expect(manageResponse(false)).toBe('incorrect')
   })
+  // add more use cases
 })
 
 describe('Function "getrandomCompliment"', () => {

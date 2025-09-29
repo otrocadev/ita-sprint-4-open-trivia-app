@@ -64,6 +64,7 @@ export const addUserResult = (
       questionData.possibleAnsers.possibleResponses[correctAnswerIndex] ?? '',
     anseredCorrectly: isCorrect,
   })
+  console.log(userResults)
 }
 
 export const showNotification = (toastType: string) => {
