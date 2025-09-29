@@ -18,17 +18,17 @@ const randomCompliment = getrandomCompliment()
       class="text-gray-900 p-8 lg:p-24 border-2 border-gray-900 rounded-2xl gap-4 items-center justify-center grid grid-cols-1 lg:grid-cols-3"
     >
       <Icon
-        class="col-span-1 w-full h-full hidden"
+        class="col-span-1 m-auto w-24 h-24 lg:w-full lg:h-full hidden"
         name="headstone"
         id="headstone-icon"
       />
       <Icon
-        class="col-span-1 w-full h-full hidden"
+        class="col-span-1 m-auto w-24 h-24 lg:w-full lg:h-full hidden"
         name="confetti"
         id="confetti-icon"
       />
       <Icon
-        class="col-span-1 w-full h-full hidden"
+        class="col-span-1 m-auto w-24 h-24 lg:w-full lg:h-full hidden"
         name="cross"
         id="cross-icon"
       />
@@ -54,7 +54,7 @@ const randomCompliment = getrandomCompliment()
             >You responded correctly</span
           >
           <span class="flex flex-col items-center gap-2 text-xl"
-            ><p>Here goes the RandomCompliment</p>
+            ><p class="text-center" id="random-compliment"></p>
             <Placeholder>
               + 100
               <Icon name="coin" />
@@ -69,7 +69,7 @@ const randomCompliment = getrandomCompliment()
             >You responded incorrectly</span
           >
           <span class="flex flex-col items-center gap-2 text-xl">
-            <p>Here will go the API response</p>
+            <p class="text-center" id="failed-question-feed-back"></p>
             <Placeholder>
               - 1
               <Icon name="broken_heart" />

@@ -7,6 +7,8 @@ import {
 } from '../utils/gameDataManagementUtils.ts'
 
 import { complimentsPool } from '../stored/static-content.ts'
+import { getInsult } from '../services/inultAPI'
+import { getMotivationalQuote } from '../services/motivationAPI'
 
 export const decodeHtml = (html: string) => {
   html = html.replace(/&quot;/g, '"')
@@ -63,4 +65,13 @@ export const manageResponse = (isCorrect: boolean) => {
 export const getrandomCompliment = () => {
   const randomIndex = Math.floor(Math.random() * complimentsPool.length)
   return complimentsPool[randomIndex]
+}
+
+export const getFailedQuestionFeedBack = async () => {
+  const randomIndex = Math.floor(Math.random() * 2)
+  if (randomIndex === 0) {
+    return await getInsult()
+  } else {
+    return await getMotivationalQuote()
+  }
 }
