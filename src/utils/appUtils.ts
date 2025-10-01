@@ -68,10 +68,10 @@ export const getrandomCompliment = () => {
 }
 
 export const getFailedQuestionFeedBack = async () => {
-  const randomIndex = Math.floor(Math.random() * 2)
-  if (randomIndex === 0) {
-    return await getInsult()
-  } else {
-    return await getMotivationalQuote()
-  }
+  //const randomIndex = Math.floor(Math.random() * 2)
+  //if (randomIndex === 0) {
+  return await getInsult()
+  //} else {
+  //return await getMotivationalQuote()
+  //}
 }
