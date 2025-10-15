@@ -1,4 +1,4 @@
-# Sprint 4. Open Trivia App - IT Academy Frontend Course
+# Open Trivia App
 
 ## 🎯 Objectives
 
